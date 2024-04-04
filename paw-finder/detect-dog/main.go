@@ -34,10 +34,8 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		return events.APIGatewayProxyResponse{}, err
 	}
 	fmt.Println(lineEvent);
-	return events.APIGatewayProxyResponse{
-		Body:       "Hello, Paw!\n",
-		StatusCode: 200,
-	}, nil
+	
+	return events.APIGatewayProxyResponse{StatusCode: 200}, nil
 }
 
 func main() {
