@@ -15,6 +15,23 @@ Globals:
   Api:
     TracingEnabled: true
 Resources:
+  DetectDogFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: DetectDogFunction
+    Properties:
+      CodeUri: DetectDogFunction
+      Handler: bootstrap
+      Runtime: provided.al2
+      Architectures:
+      - x86_64
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /detect
+            Method: POST
   HelloPawFunction:
     Type: AWS::Serverless::Function
     Metadata:

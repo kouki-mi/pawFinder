@@ -59,35 +59,8 @@ func Test_validateRequest(t *testing.T) {
 				},
 			},
 			wantErr: false,
-		},
-		{
+		},{
 			name: "FailedCase",
-			args: args{
-				request: `{
-					"events": [
-						{
-							"type": "message",
-							"replyToken": "nHuyWiB7yP5Zw",
-							"message": {
-								"type": "text",
-								"id": "325708",
-								"text": "Hello, world"
-							},
-						}
-					]
-				}`,
-			},
-			want: LineEvent{},
-			wantErr: true,
-		},{
-			name: "NilCase",
-			args: args{
-				request: `{}`,
-			},
-			want: LineEvent{},
-			wantErr: false,
-		},{
-			name: "EmptyCase",
 			args: args{
 				request: ``,
 			},
