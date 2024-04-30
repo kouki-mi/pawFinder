@@ -12,7 +12,7 @@ func Test_validateRequest(t *testing.T) {
 	tests := []struct {
 		name    string
 		args    args
-		want    LineEvent
+		want    LineEvents
 		wantErr bool
 	}{
 		// TODO: Add test cases.
@@ -33,7 +33,7 @@ func Test_validateRequest(t *testing.T) {
 					]
 				}`,
 			},
-			want: LineEvent{
+			want: LineEvents{
 				Events: []struct {
 					Type      string `json:"type"`
 					ReplyToken string `json:"replyToken"`
@@ -64,14 +64,14 @@ func Test_validateRequest(t *testing.T) {
 			args: args{
 				request: ``,
 			},
-			want: LineEvent{},
+			want: LineEvents{},
 			wantErr: true,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := validateRequest(tt.args.request)
+			got, err := unmarshalRequest(tt.args.request)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("validateRequest() error = %v, wantErr %v", err, tt.wantErr)
 				return
