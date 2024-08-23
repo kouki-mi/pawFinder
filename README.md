@@ -1,2 +1,2 @@
 # pawFinder
-犬の画像を解析するbot
+awsのrekognitionを駆使して、linebotの画像から映ってる物を識別できるツールです
